@@ -1,8 +1,8 @@
 {
   "id": "/ljs-home/",
-  "name": "LJS Home",
-  "short_name": "LJS Home",
-  "description": "LJS Home - application LJS Energies",
+  "name": "LJS HOME",
+  "short_name": "LJS HOME",
+  "description": "LJS HOME - application LJS Energies",
   "start_url": "/ljs-home/?source=pwa",
   "scope": "/ljs-home/",
   "display": "standalone",
