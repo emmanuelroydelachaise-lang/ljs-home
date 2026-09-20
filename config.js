@@ -1,6 +1,6 @@
 window.LJS_CONFIG = {
-  SUPABASE_URL: "https://wptorwbmgwsadbuxwyvk.supabase.co",
-  SUPABASE_ANON_KEY: "sb_publishable_VO7mh6MsjflCc8IIUpElPA_8rAaJo89",
+  SUPABASE_URL: "https://xrntdqlqkteikknrgvwy.supabase.co",
+  SUPABASE_ANON_KEY: "sb_publishable_jXOFo8ae_aj-YN_nOqG9Tw_vHHoXYrk",
   AUTH_PASSWORD_PREFIX: "LJS-",
   TECH_ACCOUNTS: [
     { name: "Roy de Lachaise Emmanuel", email: "emmanuel@ljs.local" },
