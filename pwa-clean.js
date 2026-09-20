@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = '20260920-home-uppercase-1';
+  const VERSION = '20260920-hidden-admin-1';
   const CLEAN_KEY = 'ljs_home_pwa_clean_version';
   let deferredPrompt = null;
 
