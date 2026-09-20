@@ -15,6 +15,9 @@
       visibleButton.tabIndex = -1;
     }
 
+    const administrativeButton = document.getElementById('administrativeLoginOpen');
+    if (administrativeButton) administrativeButton.remove();
+
     const logo = document.querySelector('.login-logo');
     const drop = logo?.querySelector('.admin-secret-drop');
     if (!logo || !drop) return;
