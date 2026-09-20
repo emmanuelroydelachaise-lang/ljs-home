@@ -1,6 +1,6 @@
 (() => {
-  const VERSION = '20260916-pwa-22';
-  const CLEAN_KEY = 'ljs_pwa_clean_version';
+  const VERSION = '20260920-ljshome-1';
+  const CLEAN_KEY = 'ljshome_pwa_clean_version';
   let deferredPrompt = null;
 
   const isStandalone = () =>
@@ -211,7 +211,7 @@
         await Promise.all(registrations.map(registration => registration.unregister()));
         if ('caches' in window) {
           const names = await caches.keys();
-          await Promise.all(names.filter(name => name.startsWith('ljs-')).map(name => caches.delete(name)));
+          await Promise.all(names.filter(name => name.startsWith('ljshome-')).map(name => caches.delete(name)));
         }
         localStorage.setItem(CLEAN_KEY, VERSION);
       }
