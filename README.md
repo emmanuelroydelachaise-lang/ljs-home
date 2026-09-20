@@ -1,6 +1,6 @@
-# LJS Feuilles d'heures
+# LJS Home
 
-Application PWA LJS Energies pour la saisie, signature, validation et impression des feuilles d'heures hebdomadaires.
+Application PWA LJS Home, basée sur l'application LJS de feuilles d'heures et reliée à une base Supabase indépendante.
 
 - Techniciens sur mobile
 - Semaine du lundi au dimanche
