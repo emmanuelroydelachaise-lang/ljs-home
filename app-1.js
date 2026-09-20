@@ -102,8 +102,8 @@ function normalizeSheet(s, weekStart=null) {
 }
 
 function initDemo() {
-  if (!localStorage.getItem('ljshome_demo_db')) {
-    localStorage.setItem('ljshome_demo_db', JSON.stringify({
+  if (!localStorage.getItem('ljs_demo_db')) {
+    localStorage.setItem('ljs_demo_db', JSON.stringify({
       technicians: [
         {id:'emmanuel@ljs.local', full_name:'Roy de Lachaise Emmanuel', login_email:'emmanuel@ljs.local', employment_type:'employee', pin:'1234', active:true},
         {id:'adrien@ljs.local', full_name:'Paterne Adrien', login_email:'adrien@ljs.local', employment_type:'employee', pin:'1234', active:true},
@@ -122,7 +122,7 @@ function initDemo() {
       sheets: []
     }));
   }
-  const db = JSON.parse(localStorage.getItem('ljshome_demo_db'));
+  const db = JSON.parse(localStorage.getItem('ljs_demo_db'));
   let changed = false;
   if (!Array.isArray(db.technicians)) {
     db.technicians = (CFG.TECH_ACCOUNTS||[]).map(t=>({id:t.email,full_name:t.name,login_email:t.email,employment_type:'employee',pin:'1234',active:true}));
@@ -143,10 +143,10 @@ function initDemo() {
     (s.days||[]).forEach(d=>{if(!('absent' in d)){d.absent=false;changed=true;}});
     return s;
   });
-  if (changed) localStorage.setItem('ljshome_demo_db', JSON.stringify(db));
+  if (changed) localStorage.setItem('ljs_demo_db', JSON.stringify(db));
 }
-function demoDb() { initDemo(); return JSON.parse(localStorage.getItem('ljshome_demo_db')); }
-function saveDemoDb(db) { localStorage.setItem('ljshome_demo_db', JSON.stringify(db)); }
+function demoDb() { initDemo(); return JSON.parse(localStorage.getItem('ljs_demo_db')); }
+function saveDemoDb(db) { localStorage.setItem('ljs_demo_db', JSON.stringify(db)); }
 
 async function loadTechnicians(includeInactive=false) {
   if (!isCloud) {

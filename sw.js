@@ -1,4 +1,4 @@
-const CACHE = 'ljshome-v1';
+const CACHE = 'ljs-home-v1';
 const ASSETS = [
   './', './index.html', './styles.css', './print-vector.css', './print-fit.css', './admin-archives.css', './admin-dashboard.css', './technician-admin-changes.css', './technician-archives.css', './leave-requests.css', './admin-leave-requests.css', './config.js',
   './app-1.js', './app-2.js', './app-3.js', './app-4.js', './app-5.js', './app-6.js',
@@ -20,15 +20,13 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
   event.waitUntil((async () => {
     const keys = await caches.keys();
-    await Promise.all(keys.filter(key => key.startsWith('ljshome-') && key !== CACHE).map(key => caches.delete(key)));
+    await Promise.all(keys.filter(key => key.startsWith('ljs-home-') && key !== CACHE).map(key => caches.delete(key)));
     await self.clients.claim();
   })());
 });
 
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
-  const url = new URL(event.request.url);
-  if (url.origin !== self.location.origin) return;
   event.respondWith((async () => {
     try {
       const response = await fetch(event.request, { cache: 'no-store' });
