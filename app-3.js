@@ -185,7 +185,7 @@ function renderWeek() {
 }
 function projectOptions(selected, allowInactive=false) {
   const normal=state.projects.filter(p=>allowInactive || p.active !== false || p.id===selected).map(p=>`<option value="${p.id}" ${p.id===selected?'selected':''}>${esc(p.code)} — ${esc(p.name)}</option>`).join('');
-  return normal + `<option value="${OTHER_PROJECT_ID}" ${selected===OTHER_PROJECT_ID?'selected':''}>AUTRE — Saisie manuelle</option>`;
+  return normal + `<option value="${OTHER_PROJECT_ID}" ${selected===OTHER_PROJECT_ID?'selected':''}>CHANTIER LIBRE / DÉPANNAGE</option>`;
 }
 function renderDay(day, dayIndex, locked) {
   const sec = document.createElement('section');
@@ -211,8 +211,8 @@ function renderDay(day, dayIndex, locked) {
         <div><label>Heures</label><input class="hours" type="number" min="0" max="24" step="0.25" value="${e.hours || ''}" inputmode="decimal" ${disabled?'disabled':''}></div>
         <button class="remove" title="Supprimer" ${disabled?'disabled':''}>×</button>
         <div class="manual-project-fields ${e.project_id===OTHER_PROJECT_ID?'':'hidden'}">
-          <div><label>N° affaire / réf. (facultatif)</label><input class="manual-code" value="${esc(e.manual_project_code)}" placeholder="AUTRE" ${disabled?'disabled':''}></div>
-          <div><label>Nom du chantier / intervention</label><input class="manual-name" value="${esc(e.manual_project_name)}" placeholder="Saisir le chantier manuellement" ${disabled?'disabled':''}></div>
+          <div><label>N° chantier (facultatif)</label><input class="manual-code" value="${esc(e.manual_project_code)}" placeholder="Ex. 01234" ${disabled?'disabled':''}></div>
+          <div><label>Intitulé</label><input class="manual-name" value="${esc(e.manual_project_name)}" placeholder="Ex. Dépannage client" ${disabled?'disabled':''}></div>
         </div>`;
       row.querySelector('.project').onchange = ev => { e.project_id = ev.target.value; if(e.project_id!==OTHER_PROJECT_ID){e.manual_project_code='';e.manual_project_name='';} redrawEntries(); };
       row.querySelector('.hours').oninput = ev => { e.hours = Math.max(0, Number(ev.target.value || 0)); updateTotals(); };
@@ -335,7 +335,7 @@ async function saveWeek(submit) {
     s.submitted_at = new Date().toISOString();
   }
   const invalidOther=s.days.some(d=>!d.absent && d.entries.some(e=>Number(e.hours)>0 && e.project_id===OTHER_PROJECT_ID && !String(e.manual_project_name||'').trim()));
-  if(invalidOther){alert('Pour « Chantier autre », renseigne le nom du chantier ou de l’intervention.');return;}
+  if(invalidOther){alert('Pour « Chantier libre / Dépannage », renseigne au minimum l’intitulé. Le N° chantier est facultatif.');return;}
   const msg = document.getElementById('saveMsg');
   msg.textContent='Enregistrement…';
   try {
