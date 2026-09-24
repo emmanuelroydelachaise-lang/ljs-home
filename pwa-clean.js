@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = '20260924-tech-mon-fri-2';
+  const VERSION = '20260924-tech-mon-fri-3';
   const CLEAN_KEY = 'ljs_home_pwa_clean_version';
   let deferredPrompt = null;
 
