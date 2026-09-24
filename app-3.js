@@ -76,10 +76,10 @@ function formatArchiveDate(iso) {
 
 function archiveWeekPeriod(weekStart) {
   const monday = new Date(weekStart + 'T12:00:00');
-  const saturday = new Date(monday);
-  saturday.setDate(monday.getDate() + 5);
+  const friday = new Date(monday);
+  friday.setDate(monday.getDate() + 4);
   const fmt = d => d.toLocaleDateString('fr-FR', { day:'2-digit', month:'2-digit', year:'numeric' });
-  return `${fmt(monday)} au ${fmt(saturday)}`;
+  return `${fmt(monday)} au ${fmt(friday)}`;
 }
 
 async function getTechnicianApprovedSheets() {
@@ -179,7 +179,7 @@ function renderWeek() {
   document.getElementById('weekComment').oninput = e => { s.general_comment = e.target.value; };
   const days = document.getElementById('days');
   days.innerHTML='';
-  s.days.slice(0,6).forEach((d, idx) => days.append(renderDay(d, idx, locked)));
+  s.days.slice(0,5).forEach((d, idx) => days.append(renderDay(d, idx, locked)));
   renderTechSignature(locked);
   updateTotals();
 }
