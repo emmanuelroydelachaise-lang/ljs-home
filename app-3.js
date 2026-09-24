@@ -212,7 +212,7 @@ function renderWeek() {
   document.getElementById('submitBtn').textContent = locked ? (s.status==='approved'?'Feuille validée':'Semaine déjà validée') : 'Signer et valider la semaine';
   document.getElementById('saveBtn').onclick = () => saveWeek(false);
   document.getElementById('submitBtn').onclick = () => saveWeek(true);
-  document.getElementById('printTechBtn').onclick = () => printTimesheet(s, currentProfile.full_name);
+  document.getElementById('printTechBtn').onclick = () => printTimesheet({...s, days:(s.days||[]).slice(0,5)}, currentProfile.full_name);
   vehicle.onchange = () => { s.vehicle_id = vehicle.value; };
   document.getElementById('weekComment').oninput = e => { s.general_comment = e.target.value; };
   const days = document.getElementById('days');
